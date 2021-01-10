@@ -22,12 +22,12 @@ class VehicleFuelType : Fragment(R.layout.fragment_vehicle_fuel_type),
     private lateinit var adapter: ItemAdapter
     private var fuelTypeList: ArrayList<String> = ArrayList()
 
-    private val viewModel: VehicleViewModel by viewModels()
+    lateinit var viewModel : VehicleViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
         fuelTypeList.add("Petrol")
@@ -37,8 +37,8 @@ class VehicleFuelType : Fragment(R.layout.fragment_vehicle_fuel_type),
         fuelTypeList.add("Electric")
         fuelTypeList.add("Hybrid")
 
-        adapter = ItemAdapter((activity as MainActivity).applicationContext, fuelTypeList, this)
-        recyclerView.adapter = adapter
+//        adapter = ItemAdapter((activity as MainActivity).applicationContext, fuelTypeList, this)
+//        recyclerView.adapter = adapter
 
     }
 

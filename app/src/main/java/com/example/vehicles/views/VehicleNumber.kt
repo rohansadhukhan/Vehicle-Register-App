@@ -1,6 +1,7 @@
 package com.example.vehicles.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,11 +16,15 @@ import kotlinx.android.synthetic.main.fragment_vehicle_number.*
 class VehicleNumber : Fragment(R.layout.fragment_vehicle_number) {
 
     private lateinit var number: String
+    lateinit var viewModel : VehicleViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel : VehicleViewModel by viewModels()
+
+        viewModel = (activity as MainActivity).viewModel
+
+        Log.d("ViewModel Hash Code -", viewModel.hashCode().toString())
 
         goToMake.setOnClickListener {
             number = inputVehicleNumber.text.toString()

@@ -17,20 +17,22 @@ import kotlinx.android.synthetic.main.fragment_vehicle_make.*
 class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
     ItemAdapter.OnItemClickListener {
 
+    lateinit var viewModel : VehicleViewModel
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
-    private lateinit var modelList: List<String>
+    private lateinit var modelList: ArrayList<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel: VehicleViewModel by viewModels()
+        viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
-        viewModel.getModelList()
-        modelList = viewModel.modelList
-        adapter = ItemAdapter((activity as MainActivity).applicationContext, modelList, this)
-        recyclerView.adapter = adapter
+//        viewModel.getModelList()
+//        modelList = viewModel.modelList
+//        adapter = ItemAdapter((activity as MainActivity).applicationContext, modelList, this)
+//        recyclerView.adapter = adapter
 
     }
 

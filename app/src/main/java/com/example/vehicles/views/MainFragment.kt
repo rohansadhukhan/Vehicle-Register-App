@@ -18,12 +18,13 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var vehicleList: List<Vehicle>
-    val viewModel: VehicleViewModel by viewModels()
+    lateinit var viewModel : VehicleViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
+        viewModel = (activity as MainActivity).viewModel
 
 //        viewModel.getAllVehicles.observe(viewLifecycleOwner, Observer {
 //            vehicleList = it

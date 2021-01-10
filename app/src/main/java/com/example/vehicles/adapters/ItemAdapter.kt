@@ -9,10 +9,15 @@ import com.example.vehicles.R
 import kotlinx.android.synthetic.main.item.view.*
 
 class ItemAdapter(
-    private val context: Context,
-    private val items: List<String>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<ItemAdapter.CustomViewHolder>() {
+
+    private lateinit var items: List<String>
+
+    fun updateItemList(itemList : List<String>) {
+        this.items = itemList
+        notifyDataSetChanged()
+    }
 
     interface OnItemClickListener {
         fun onItemClicked(position: Int)
