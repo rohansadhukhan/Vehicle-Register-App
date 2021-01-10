@@ -31,7 +31,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        (activity as MainActivity).actionBar?.title ?: "Vehicles"
         (activity as MainActivity).toolbar.title = "Vehicles"
 
         setUpRecyclerView()
@@ -40,6 +39,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         viewModel.getAllVehicles.observe(viewLifecycleOwner, Observer {
             vehicleList = it
             vehicleAdapter.updateVehiclesList(it)
+            if(vehicleList.isEmpty()) {
+                dummyText.visibility = View.VISIBLE
+            } else {
+                dummyText.visibility = View.GONE
+            }
         })
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
@@ -93,5 +97,4 @@ class MainFragment : Fragment(R.layout.fragment_main),
             bundle
         )
     }
-
 }
