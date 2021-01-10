@@ -29,12 +29,15 @@ class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).actionBar?.title ?: "Select Model"
+
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
-        viewModel.getMakerList()
-        viewModel.makerList.observe(viewLifecycleOwner, Observer {
+        viewModel.getModelList()
+        viewModel.modelList.observe(viewLifecycleOwner, Observer {
             modelList = it
+            modelProgressBar.visibility = View.INVISIBLE
             modelAdapter.updateItemList(it)
         })
 
@@ -45,9 +48,9 @@ class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
         modelRecyclerView.apply {
             this.setHasFixedSize(true)
             layoutManager = LinearLayoutManager((activity as MainActivity).applicationContext)
-            modelAdapter.updateItemList(listOf("Rohan"))
             adapter = modelAdapter
         }
+        modelProgressBar.visibility = View.VISIBLE
     }
 
     override fun onItemClicked(position: Int) {

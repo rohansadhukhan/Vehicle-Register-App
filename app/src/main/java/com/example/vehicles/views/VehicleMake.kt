@@ -24,6 +24,8 @@ class VehicleMake : Fragment(R.layout.fragment_vehicle_make), ItemAdapter.OnItem
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).actionBar?.title ?: "Select Make"
+
         setUpRecyclerView()
         viewModel = (activity as MainActivity).viewModel
 
@@ -32,6 +34,7 @@ class VehicleMake : Fragment(R.layout.fragment_vehicle_make), ItemAdapter.OnItem
         viewModel.getMakerList()
         viewModel.makerList.observe(viewLifecycleOwner, Observer {
             makerList = it
+            makerProgressBar.visibility = View.INVISIBLE
             makerAdapter.updateItemList(it)
         })
 
@@ -42,9 +45,9 @@ class VehicleMake : Fragment(R.layout.fragment_vehicle_make), ItemAdapter.OnItem
         makerRecyclerView.apply {
             this.setHasFixedSize(true)
             layoutManager = LinearLayoutManager((activity as MainActivity).applicationContext)
-            makerAdapter.updateItemList(listOf("Rohan"))
             adapter = makerAdapter
         }
+        makerProgressBar.visibility = View.VISIBLE
     }
 
     override fun onItemClicked(position: Int) {

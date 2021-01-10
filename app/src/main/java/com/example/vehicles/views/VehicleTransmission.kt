@@ -21,6 +21,8 @@ class VehicleTransmission : Fragment(R.layout.fragment_vehicle_transmission) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).actionBar?.title ?: "Select Transmission"
+
         manualTransmission.itemName.text = "Manual"
         automaticTransmission.itemName.text = "Automatic"
 
@@ -29,13 +31,13 @@ class VehicleTransmission : Fragment(R.layout.fragment_vehicle_transmission) {
         manualTransmission.setOnClickListener {
             viewModel.vehicleTransmission = "Manual"
             viewModel.insertNewVehicle();
-            findNavController().navigate(R.id.action_vehicleTransmission_to_vehicleProfile)
+            findNavController().navigate(R.id.action_vehicleTransmission_to_mainFragment)
         }
 
         automaticTransmission.setOnClickListener {
             viewModel.vehicleTransmission = "Automatic"
             viewModel.insertNewVehicle();
-            findNavController().navigate(R.id.action_vehicleTransmission_to_vehicleProfile)
+            findNavController().navigate(R.id.action_vehicleTransmission_to_mainFragment)
         }
 
     }

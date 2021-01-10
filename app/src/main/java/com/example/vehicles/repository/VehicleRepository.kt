@@ -19,6 +19,10 @@ class VehicleRepository @Inject constructor(
         vehicleDao.insertNewVehicle(vehicle)
     }
 
+    suspend fun deleteVehicle(vehicle: Vehicle) = withContext(Dispatchers.IO) {
+        vehicleDao.deleteVehicle(vehicle)
+    }
+
     suspend fun getVehicleMakers(type : String)  =
         api.getVehicleMakers(type)
 

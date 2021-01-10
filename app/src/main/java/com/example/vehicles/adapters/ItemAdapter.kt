@@ -12,7 +12,7 @@ class ItemAdapter(
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<ItemAdapter.CustomViewHolder>() {
 
-    private lateinit var items: List<String>
+    private var items: List<String> = ArrayList()
 
     fun updateItemList(itemList : List<String>) {
         this.items = itemList

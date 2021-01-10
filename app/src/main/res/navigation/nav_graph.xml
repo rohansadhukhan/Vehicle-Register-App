@@ -56,8 +56,10 @@
         android:label="fragment_vehicle_transmission"
         tools:layout="@layout/fragment_vehicle_transmission" >
         <action
-            android:id="@+id/action_vehicleTransmission_to_vehicleProfile"
-            app:destination="@id/vehicleProfile" />
+            android:id="@+id/action_vehicleTransmission_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/vehicleTransmission" />
     </fragment>
     <fragment
         android:id="@+id/vehicleProfile"
@@ -66,7 +68,12 @@
         tools:layout="@layout/fragment_vehicle_profile" >
         <action
             android:id="@+id/action_vehicleProfile_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/vehicleProfile" />
+        <argument
+            android:name="vehicle"
+            app:argType="com.example.vehicles.database.Vehicle" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

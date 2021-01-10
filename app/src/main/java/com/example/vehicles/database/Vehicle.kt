@@ -2,6 +2,7 @@ package com.example.vehicles.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(
     tableName = "vehicles"
@@ -14,7 +15,7 @@ data class Vehicle(
     val model: String,
     val fuel: String,
     val transmission: String
-) {
+) : Serializable {
     @PrimaryKey(
         autoGenerate = true
     )

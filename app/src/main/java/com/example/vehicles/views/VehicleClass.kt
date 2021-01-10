@@ -22,6 +22,8 @@ class VehicleClass : Fragment(R.layout.fragment_vehicle_class) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).actionBar?.title ?: "Select Class"
+
         car.itemName.text = "Car"
         bike.itemName.text = "Bike"
 

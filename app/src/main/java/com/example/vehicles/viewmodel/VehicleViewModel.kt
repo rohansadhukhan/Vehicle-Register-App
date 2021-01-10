@@ -28,6 +28,10 @@ constructor(val vehicleRepository: VehicleRepository) : ViewModel() {
 
     val getAllVehicles: LiveData<List<Vehicle>> = vehicleRepository.getAllVehicles
 
+    fun delete(vehicle : Vehicle) = viewModelScope.launch {
+        vehicleRepository.deleteVehicle(vehicle)
+    }
+
     fun insert(vehicle: Vehicle) = viewModelScope.launch {
         vehicleRepository.insertNewVehicle(vehicle)
     }

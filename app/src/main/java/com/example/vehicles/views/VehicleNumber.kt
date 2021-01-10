@@ -24,6 +24,8 @@ class VehicleNumber : Fragment(R.layout.fragment_vehicle_number) {
 
         viewModel = (activity as MainActivity).viewModel
 
+        (activity as MainActivity).actionBar?.title ?: "Create new vehicle profile"
+
         Log.d("ViewModel Hash Code -", viewModel.hashCode().toString())
 
         goToMake.setOnClickListener {

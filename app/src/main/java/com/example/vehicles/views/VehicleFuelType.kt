@@ -25,6 +25,8 @@ class VehicleFuelType : Fragment(R.layout.fragment_vehicle_fuel_type),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).actionBar?.title ?: "Select Fuel Type"
+
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
