@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/vehicleClass"
+        android:name="com.example.vehicles.views.VehicleClass"
+        android:label="fragment_vehicle_class"
+        tools:layout="@layout/fragment_vehicle_class">
+        <action
+            android:id="@+id/action_vehicleClass_to_vehicleMake"
+            app:destination="@id/vehicleMake" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleFuelType"
+        android:name="com.example.vehicles.views.VehicleFuelType"
+        android:label="fragment_vehicle_fuel_type"
+        tools:layout="@layout/fragment_vehicle_fuel_type">
+        <action
+            android:id="@+id/action_vehicleFuelType_to_vehicleTransmission"
+            app:destination="@id/vehicleTransmission" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleMake"
+        android:name="com.example.vehicles.views.VehicleMake"
+        android:label="fragment_vehicle_make"
+        tools:layout="@layout/fragment_vehicle_make">
+        <action
+            android:id="@+id/action_vehicleMake_to_vehicleModel"
+            app:destination="@id/vehicleModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleModel"
+        android:name="com.example.vehicles.views.VehicleModel"
+        android:label="fragment_vehicle_model"
+        tools:layout="@layout/fragment_vehicle_model">
+        <action
+            android:id="@+id/action_vehicleModel_to_vehicleFuelType"
+            app:destination="@id/vehicleFuelType" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleNumber"
+        android:name="com.example.vehicles.views.VehicleNumber"
+        android:label="fragment_vehicle_number"
+        tools:layout="@layout/fragment_vehicle_number">
+        <action
+            android:id="@+id/action_vehicleNumber_to_vehicleClass"
+            app:destination="@id/vehicleClass" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleTransmission"
+        android:name="com.example.vehicles.views.VehicleTransmission"
+        android:label="fragment_vehicle_transmission"
+        tools:layout="@layout/fragment_vehicle_transmission" >
+        <action
+            android:id="@+id/action_vehicleTransmission_to_vehicleProfile"
+            app:destination="@id/vehicleProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleProfile"
+        android:name="com.example.vehicles.views.VehicleProfile"
+        android:label="VehicleProfile"
+        tools:layout="@layout/fragment_vehicle_profile" >
+        <action
+            android:id="@+id/action_vehicleProfile_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.vehicles.views.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_vehicleProfile"
+            app:destination="@id/vehicleProfile" />
+        <action
+            android:id="@+id/action_mainFragment_to_vehicleNumber"
+            app:destination="@id/vehicleNumber" />
+    </fragment>
+</navigation>
