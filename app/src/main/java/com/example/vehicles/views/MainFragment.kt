@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.example.vehicles.database.Vehicle
 import com.example.vehicles.viewmodel.VehicleViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 @AndroidEntryPoint
@@ -29,7 +31,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).actionBar?.title ?: "Vehicles"
+//        (activity as MainActivity).actionBar?.title ?: "Vehicles"
+        (activity as MainActivity).toolbar.title = "Vehicles"
 
         setUpRecyclerView()
         viewModel = (activity as MainActivity).viewModel
@@ -55,7 +58,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 val position = viewHolder.adapterPosition
                 val vehicle = vehicleList[position]
                 viewModel.delete(vehicle)
-                Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_LONG).apply {
+                Snackbar.make(view, "Successfully deleted vehicle", Snackbar.LENGTH_LONG).apply {
                     setAction("UNDO") {
                         viewModel.insert(vehicle)
                     }

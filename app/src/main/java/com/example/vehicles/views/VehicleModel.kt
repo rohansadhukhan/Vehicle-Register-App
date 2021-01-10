@@ -13,6 +13,7 @@ import com.example.vehicles.adapters.ItemAdapter
 import com.example.vehicles.viewmodel.VehicleViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_vehicle_make.*
 import kotlinx.android.synthetic.main.fragment_vehicle_model.*
 
@@ -29,7 +30,7 @@ class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).actionBar?.title ?: "Select Model"
+        (activity as MainActivity).toolbar.title = "Select Model"
 
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()

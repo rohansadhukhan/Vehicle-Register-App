@@ -11,6 +11,7 @@ import com.example.vehicles.R
 import com.example.vehicles.viewmodel.VehicleViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_vehicle_class.*
 import kotlinx.android.synthetic.main.item.view.*
 
@@ -22,7 +23,7 @@ class VehicleClass : Fragment(R.layout.fragment_vehicle_class) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).actionBar?.title ?: "Select Class"
+        (activity as MainActivity).toolbar.title = "Select Class"
 
         car.itemName.text = "Car"
         bike.itemName.text = "Bike"

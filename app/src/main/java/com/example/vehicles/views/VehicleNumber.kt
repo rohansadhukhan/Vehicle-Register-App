@@ -10,6 +10,7 @@ import com.example.vehicles.R
 import com.example.vehicles.viewmodel.VehicleViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_vehicle_number.*
 
 @AndroidEntryPoint
@@ -24,7 +25,7 @@ class VehicleNumber : Fragment(R.layout.fragment_vehicle_number) {
 
         viewModel = (activity as MainActivity).viewModel
 
-        (activity as MainActivity).actionBar?.title ?: "Create new vehicle profile"
+        (activity as MainActivity).toolbar.title = "Create new vehicle profile"
 
         Log.d("ViewModel Hash Code -", viewModel.hashCode().toString())
 

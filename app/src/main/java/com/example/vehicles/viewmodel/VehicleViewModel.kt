@@ -37,7 +37,7 @@ constructor(val vehicleRepository: VehicleRepository) : ViewModel() {
     }
 
     fun insertNewVehicle() {
-        val vehicle = Vehicle(vehicleModel + vehicleMake, vehicleNumber, vehicleType, vehicleMake, vehicleModel, vehicleFuel, vehicleTransmission)
+        val vehicle = Vehicle("$vehicleModel $vehicleFuel", vehicleNumber, vehicleType, vehicleMake, vehicleModel, vehicleFuel, vehicleTransmission)
         insert(vehicle)
     }
 

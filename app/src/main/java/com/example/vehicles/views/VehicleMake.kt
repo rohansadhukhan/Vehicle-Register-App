@@ -10,6 +10,7 @@ import com.example.vehicles.R
 import com.example.vehicles.adapters.ItemAdapter
 import com.example.vehicles.viewmodel.VehicleViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_vehicle_make.*
 
 @AndroidEntryPoint
@@ -24,7 +25,7 @@ class VehicleMake : Fragment(R.layout.fragment_vehicle_make), ItemAdapter.OnItem
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).actionBar?.title ?: "Select Make"
+        (activity as MainActivity).toolbar.title = "Select Make"
 
         setUpRecyclerView()
         viewModel = (activity as MainActivity).viewModel

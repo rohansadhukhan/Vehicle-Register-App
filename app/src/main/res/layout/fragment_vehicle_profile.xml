@@ -7,7 +7,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="@android:color/holo_blue_dark" />
+        android:background="@color/purple_500" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="CIVIC PETROL"
+            android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -32,50 +35,59 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="30dp"
             android:text="MH12PN7890"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/view"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:weightSum="2">
 
-        <LinearLayout
+        <include
+            android:id="@+id/profileMake"
+            layout="@layout/profile_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_weight="1" />
 
-            <include
-                android:id="@+id/profileMake"
-                layout="@layout/profile_item"/>
-
-            <include
-                android:id="@+id/profileMake"
-                layout="@layout/profile_item" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <include
+            android:id="@+id/profileModel"
+            layout="@layout/profile_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <include
-                android:id="@+id/profileMake"
-                layout="@layout/profile_item" />
-
-            <include
-                android:id="@+id/profileMake"
-                layout="@layout/profile_item" />
-
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view1"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:weightSum="2">
+
+        <include
+            android:id="@+id/profileFuel"
+            layout="@layout/profile_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/profileTransmission"
+            layout="@layout/profile_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </RelativeLayout>
