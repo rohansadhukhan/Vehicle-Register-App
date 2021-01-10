@@ -7,10 +7,6 @@ import androidx.room.PrimaryKey
     tableName = "vehicles"
 )
 data class Vehicle(
-    @PrimaryKey(
-        autoGenerate = true
-    )
-    val id: Int? = null,
     val name: String,
     var number: String,
     val type: String,
@@ -19,4 +15,8 @@ data class Vehicle(
     val fuel: String,
     val transmission: String
 ) {
+    @PrimaryKey(
+        autoGenerate = true
+    )
+    var id: Int? = null
 }

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vehicles.R
@@ -12,6 +14,7 @@ import com.example.vehicles.viewmodel.VehicleViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_vehicle_make.*
+import kotlinx.android.synthetic.main.fragment_vehicle_model.*
 
 @AndroidEntryPoint
 class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
@@ -20,8 +23,8 @@ class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
     lateinit var viewModel : VehicleViewModel
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ItemAdapter
-    private lateinit var modelList: ArrayList<String>
+    private lateinit var modelAdapter: ItemAdapter
+    private var modelList: List<String> = ArrayList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,20 +32,26 @@ class VehicleModel : Fragment(R.layout.fragment_vehicle_model),
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
-//        viewModel.getModelList()
-//        modelList = viewModel.modelList
-//        adapter = ItemAdapter((activity as MainActivity).applicationContext, modelList, this)
-//        recyclerView.adapter = adapter
+        viewModel.getMakerList()
+        viewModel.makerList.observe(viewLifecycleOwner, Observer {
+            modelList = it
+            modelAdapter.updateItemList(it)
+        })
 
     }
 
     private fun setUpRecyclerView() {
-        recyclerView = makerRecyclerView
-        recyclerView.layoutManager =
-            LinearLayoutManager((activity as MainActivity).applicationContext)
+        modelAdapter = ItemAdapter(this)
+        modelRecyclerView.apply {
+            this.setHasFixedSize(true)
+            layoutManager = LinearLayoutManager((activity as MainActivity).applicationContext)
+            modelAdapter.updateItemList(listOf("Rohan"))
+            adapter = modelAdapter
+        }
     }
 
     override fun onItemClicked(position: Int) {
-
+        viewModel.vehicleModel = modelList[position]
+        findNavController().navigate(R.id.action_vehicleModel_to_vehicleFuelType)
     }
 }

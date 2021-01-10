@@ -26,10 +26,7 @@ class VehicleClass : Fragment(R.layout.fragment_vehicle_class) {
         bike.itemName.text = "Bike"
 
         viewModel = (activity as MainActivity).viewModel
-        Log.d("ViewModel Hash Code -", viewModel.hashCode().toString())
-
-//        Log.d("rohan : Number -", viewModel.vehicleNumber)
-        Toast.makeText(context, viewModel.vehicleNumber, Toast.LENGTH_SHORT).show()
+//        Log.d("ViewModel Hash Code -", viewModel.hashCode().toString())
 
         car.setOnClickListener {
             viewModel.vehicleType = "4w"
