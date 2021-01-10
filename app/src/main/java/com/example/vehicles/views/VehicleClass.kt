@@ -1,6 +1,5 @@
 package com.example.vehicles.views
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,11 +7,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.vehicles.R
 import com.example.vehicles.viewmodel.VehicleViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_vehicle_class.*
 import kotlinx.android.synthetic.main.item.view.*
 
+@AndroidEntryPoint
 class VehicleClass : Fragment(R.layout.fragment_vehicle_class) {
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,7 +21,7 @@ class VehicleClass : Fragment(R.layout.fragment_vehicle_class) {
         car.itemName.text = "Car"
         bike.itemName.text = "Bike"
 
-        val viewModel : VehicleViewModel by viewModels()
+        val viewModel: VehicleViewModel by viewModels()
 
         car.setOnClickListener {
             viewModel.vehicleType = "4w"

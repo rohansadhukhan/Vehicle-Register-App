@@ -7,8 +7,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.vehicles.R
 import com.example.vehicles.viewmodel.VehicleViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_vehicle_number.*
 
+@AndroidEntryPoint
 class VehicleNumber : Fragment(R.layout.fragment_vehicle_number) {
 
     private lateinit var number: String

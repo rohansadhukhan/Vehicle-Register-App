@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class VehicleViewModel
 @ViewModelInject
-constructor(private val vehicleRepository: VehicleRepository) : ViewModel() {
+constructor(val vehicleRepository: VehicleRepository) : ViewModel() {
 
     var vehicleNumber: String? = null
     var vehicleType: String? = null

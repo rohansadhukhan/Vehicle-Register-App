@@ -9,8 +9,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class VehicleRepository @Inject constructor(
-    private val vehicleDao: VehicleDao,
-    private val api : ApiService
+    val vehicleDao: VehicleDao,
+    val api : ApiService
 ) {
 
     val getAllVehicles : LiveData<List<Vehicle>> = vehicleDao.getAllVehicles()

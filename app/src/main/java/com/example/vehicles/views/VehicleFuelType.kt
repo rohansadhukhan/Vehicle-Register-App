@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vehicles.R
 import com.example.vehicles.adapters.ItemAdapter
 import com.example.vehicles.viewmodel.VehicleViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_vehicle_make.*
 
+@AndroidEntryPoint
 class VehicleFuelType : Fragment(R.layout.fragment_vehicle_fuel_type),
     ItemAdapter.OnItemClickListener {
 

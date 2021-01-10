@@ -41,7 +41,9 @@ class AppModule {
     ) : VehicleDao =
         database.vehicleDao()
 
+
     @Provides
+    @Singleton
     fun provideVehicleRepository(
         vehicleDao: VehicleDao,
         api : ApiService
